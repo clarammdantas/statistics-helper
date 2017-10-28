@@ -5,6 +5,7 @@ from math import sqrt
 #lx = [16 31 38 39 37 36 36 22 10]
 #ly = [290 374 393 425 406 370 365 320 269]
 
+
 def getRol(lx):
 	sortedLx = sorted(lx)
 	return sortedLx
@@ -78,15 +79,13 @@ def averageDeviation(lx):
 
 def correlation(lx, ly):
 	xy = 0
-	sumX = 0
-	sumY = 0
+	sumX = sum(lx)
+	sumY = sum(ly)
 	sqrtX = 0
 	sqrtY = 0
 
 	for i in range(len(lx)):
 		xy += lx[i] * ly[i]
-		sumX += lx[i]
-		sumY += ly[i]
 		sqrtX += lx[i]**2
 		sqrtY += ly[i]**2
 
@@ -95,13 +94,36 @@ def correlation(lx, ly):
 
 	return numerator / denominator
 
+print "Press the number of vriables you have (1 or 2):"
+numVariables = int(raw_input())
+if numVariables == 1:
+	lx = map(float, raw_input("Digite os valores da variavel X separados por espaco: \n").split())
+	print
+
+else:
+	lx = map(float, raw_input("Digite os valores da variavel X separados por espaco: \n").split())
+	print
+	ly = map(float, raw_input("Digite os valores da variavel Y separados por espaco: \n").split())
+
+
 while True:
 	print "Options:"
-	print "Press 1 for median"
+	print "Press 1 for get Rol"
+	print "Press 2 for median"
+	print "Press 3 for mode"
+	print "Press 4 for average"
+	print "Press 5 for variance"
+	print "Press 6 for standard deviation"
+	print "Press 7 for average deviation"
+	print "Press 8 for correlation"
+	print "Press 9 for exit"
+	print "Press 10 to change variable"
+	print 
 
-lx = map(float, raw_input("Digite os valores da variavel X separados por espaco: \n").split())
-print
-ly = map(float, raw_input("Digite os valores da variavel Y separados por espaco: \n").split())
+	option = map(int, raw_input())
 
-print ""
-print "O valor da correlacao linear entre as variaveis eh: %.3f" %correlacao(lx, ly)
+	if option == 9: break
+
+
+	print ""
+	print "O valor da correlacao linear entre as variaveis eh: %.3f" %correlacao(lx, ly)
